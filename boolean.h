@@ -11,8 +11,7 @@ class boolean {
     
     public:
         boolean(int s) : size(s){
-            array = new char[s];
-			this->clear();
+            array = new char[s] {};
         }
         
         void bitOn(int position) {
@@ -33,8 +32,10 @@ class boolean {
 			return (array[char_index] >> index) & 1;
         }
     
-        void clear() {    
-            for (int i=0; i<size; ++i) bitOff(i);
+        void clear() {
+            for (int i=0; i<sizeof(array)/sizeof(array[0]);++i){
+                array[i] = array[i] << 8;
+            }
         }
 
         int get_size() {return size;}
